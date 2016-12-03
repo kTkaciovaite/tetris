@@ -82,12 +82,12 @@ namespace Tetris
         public void putTetriminoIntoBoard(Tetrimino tetrimino)
         {
             int index = 0;
-
-            for (int i = 0; i < tetrimino.Height; i++)
+            
+            for (int i = 0; i < tetrimino.dimension; i++)
             {
-                for (int j = 0; j < tetrimino.Width; j++)
+                for (int j = 0; j < tetrimino.dimension; j++)
                 {
-                    if (tetrimino.tetrimino[index].Equals('1'))
+                    if (tetrimino.piece[index].Equals('1'))
                     {
                         setCellValue(tetrimino.x + j, tetrimino.y + i, tetrimino.id);
                     }
@@ -99,11 +99,11 @@ namespace Tetris
 
         public void removeTetriminoFromBoard(Tetrimino tetrimino)
         {
-            for (int i = 0; i < tetrimino.Height; i++)
+            for (int i = 0; i < tetrimino.dimension; i++)
             {
-                for (int j = 0; j < tetrimino.Width; j++)
+                for (int j = 0; j < tetrimino.dimension; j++)
                 {
-                    if (!tetrimino.tetrimino[i * tetrimino.Width + j].Equals('0'))
+                    if (!tetrimino.piece[i * tetrimino.dimension + j].Equals('0'))
                     {
                         gameBoard[tetrimino.y + i][tetrimino.x + j] = -1;
                     }
@@ -119,4 +119,3 @@ namespace Tetris
 
         public int Width => BoardWidth;
     }
-} //144

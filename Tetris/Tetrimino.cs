@@ -1,145 +1,122 @@
 ﻿using System;
+using System.Linq;
+using Tetris.TetriminoStrategies;
 
 namespace Tetris
 {
     public class Tetrimino
     {
-        public const int TetriminoWidth = 4;
-        public const int TetriminoHeight = 4;
+        private TetriminoStrategy tetrimino;
 
-        public int id { get; set; }
-        public int x { get; set; }
-        public int y { get; set; }
-        public string tetrimino { get; set; }
+        public int id => tetrimino.id;
 
+        public int x => tetrimino.x;
+
+        public int y => tetrimino.y;
+
+        public int dimension => tetrimino.dimension;
+
+        public string piece => tetrimino.tetrimino;
+        
         public Tetrimino()
         {
-            id = generateId();
-            x = 5;
-            y = 0;
-            tetrimino = getTetrimino();
-        }
-
-        public int generateId()
-        {
             Random newId = new Random();
-
-            return newId.Next(0, 6);
-        }
-
-        public string getTetrimino()
-        {
-            switch (id)
+            
+            switch(newId.Next(0, 7))
             {
                 case 0:
-                    return "0000111100000000";
+                    tetrimino = new TetriminoI();
+                    break;
                 case 1:
-                    return "0000111000100000";
+                    tetrimino = new TetriminoJ();
+                    break;
                 case 2:
-                    return "0000011101000000";
+                    tetrimino = new TetriminoL();
+                    break;
                 case 3:
-                    return "0000011001100000";
+                    tetrimino = new TetriminoO();
+                    break;
                 case 4:
-                    return "0000011011000000";
+                    tetrimino = new TetriminoS();
+                    break;
                 case 5:
-                    return "0000111001000000";
+                    tetrimino = new TetriminoT();
+                    break;
                 case 6:
-                    return "0000110001100000";
+                    tetrimino = new TetriminoZ();
+                    break;
             }
 
-            return "";
+            tetrimino.create();
         }
         
-        public int Width => TetriminoWidth;
+        public void moveDown() => tetrimino.y++;
 
-        public int Height => TetriminoHeight;
+        public void moveLeft() => tetrimino.x--;
 
-        public string getBottomBounds()
+        public void moveRight() => tetrimino.x++;
+
+        public bool canBeDropped(Board board)
         {
-            string bounds = "";
+            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == tetrimino.tetrimino).Key;
 
-            for (int i = 0; i < Width; i++)
+            string bounds = tetrimino.bottomBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
+
+            for (int i = x; i < x + dimension; i++)
             {
-                bounds += getBottomBound(i);
-            }
-
-            return bounds;
-        }
-
-        public string getBottomBound(int column)
-        {
-            string bound = "-";
-
-            for (int i = column; i < tetrimino.Length; i += Width)
-            {
-                if (tetrimino[i].Equals('1'))
+                if (!bounds[i - x].Equals('-'))
                 {
-                    bound = (i / Width).ToString();
+                    int index = y + (int)char.GetNumericValue(bounds[i - x]) + 1;
+                    if (!board.isBoardCellEmpty(index, i))
+                    {
+                        return false;
+                    }
                 }
             }
 
-            return bound;
+            return true;
         }
 
-        public string getLeftBounds()
+        public bool canBeMovedLeft(Board board)
         {
-            string bounds = "";
+            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == tetrimino.tetrimino).Key;
 
-            for (int i = 0; i < Height; i++)
+            string bounds = tetrimino.leftBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
+
+            for (int i = y; i < y + dimension; i++)
             {
-                bounds += getLeftBound(i);
-            }
-
-            return bounds;
-        }
-
-        public string getLeftBound(int line)
-        {
-            string bound = "-";
-
-            for (int i = 0; i < Width; i++)
-            {
-                if (tetrimino[line * Width + i].Equals('1'))
+                if (!bounds[i - y].Equals('-'))
                 {
-                    bound = i.ToString();
-                    break;
+                    int index = x - 1 + (int)char.GetNumericValue(bounds[i - y]);
+                    if (!board.isBoardCellEmpty(i, index))
+                    {
+                        return false;
+                    }
                 }
             }
 
-            return bound;
+            return true;
         }
 
-        public string getRightBounds()
+        public bool canBeMovedRight(Board board)
         {
-            string bounds = "";
+            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == tetrimino.tetrimino).Key;
 
-            for (int i = 0; i < Height; i++)
+            string bounds = tetrimino.rightBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
+
+            for (int i = y; i < y + dimension; i++)
             {
-                bounds += getRightBound(i);
-            }
-
-            return bounds;
-        }
-
-        public string getRightBound(int line)
-        {
-            string bound = "-";
-
-            for (int i = 0; i < Width; i++)
-            {
-                if (tetrimino[line * Width + i].Equals('1'))
+                if (!bounds[i - y].Equals('-'))
                 {
-                    bound = i.ToString();
+                    int index = x + (int)char.GetNumericValue(bounds[i - y]) + 1;
+                    if (!board.isBoardCellEmpty(i, index))
+                    {
+                        return false;
+                    }
                 }
             }
 
-            return bound;
+            return true;
         }
-
-        public void moveDown() => y++;
-
-        public void moveLeft() => x--;
-
-        public void moveRight() => x++;
     }
-} //160
+}

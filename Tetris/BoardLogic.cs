@@ -4,7 +4,7 @@
     {
         public void dropDown(Board board, Tetrimino tetrimino, ref bool isFalling)
         {
-            if(canBeDropped(board, tetrimino))
+            if(tetrimino.canBeDropped(board))
             {
                 board.removeTetriminoFromBoard(tetrimino);
                 tetrimino.moveDown();
@@ -16,81 +16,24 @@
             }
         }
 
-        public bool canBeDropped(Board board, Tetrimino tetrimino)
-        {
-            string bounds = tetrimino.getBottomBounds();
-            
-            for (int i = tetrimino.x; i < tetrimino.x + tetrimino.Width; i++)
-            {
-                if(!bounds[i - tetrimino.x].Equals('-'))
-                {
-                    int index = tetrimino.y + (int)char.GetNumericValue(bounds[i - tetrimino.x]) + 1;
-                    if (!board.isBoardCellEmpty(index, i))
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
-
         public void moveLeft(Board board, Tetrimino tetrimino)
         {
-            if (canBeMovedLeft(board, tetrimino))
+            if (tetrimino.canBeMovedLeft(board))
             {
                 board.removeTetriminoFromBoard(tetrimino);
                 tetrimino.moveLeft();
                 board.putTetriminoIntoBoard(tetrimino);
             }
         }
-
-        public bool canBeMovedLeft(Board board, Tetrimino tetrimino)
-        {
-            string bounds = tetrimino.getLeftBounds();
-
-            for (int i = tetrimino.y; i < tetrimino.y + tetrimino.Height; i++)
-            {
-                if (!bounds[i - tetrimino.y].Equals('-'))
-                {
-                    int index = tetrimino.x - 1 + (int)char.GetNumericValue(bounds[i - tetrimino.y]);
-                    if (!board.isBoardCellEmpty(i, index))
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
-
+        
         public void moveRight(Board board, Tetrimino tetrimino)
         {
-            if (canBeMovedRight(board, tetrimino))
+            if (tetrimino.canBeMovedRight(board))
             {
                 board.removeTetriminoFromBoard(tetrimino);
                 tetrimino.moveRight();
                 board.putTetriminoIntoBoard(tetrimino);
             }
-        }
-
-        public bool canBeMovedRight(Board board, Tetrimino tetrimino)
-        {
-            string bounds = tetrimino.getRightBounds();
-
-            for (int i = tetrimino.y; i < tetrimino.y + tetrimino.Height; i++)
-            {
-                if (!bounds[i - tetrimino.y].Equals('-'))
-                {
-                    int index = tetrimino.x + (int)char.GetNumericValue(bounds[i - tetrimino.y]) + 1;
-                    if (!board.isBoardCellEmpty(i, index))
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
         }
 
         public void deleteFullLines(Board board)

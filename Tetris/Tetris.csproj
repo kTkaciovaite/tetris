@@ -48,6 +48,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BoardLogic.cs" />
     <Compile Include="Tetrimino.cs" />
+    <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoI.cs" />
+    <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoJ.cs" />
+    <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoL.cs" />
+    <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoO.cs" />
+    <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoS.cs" />
+    <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoT.cs" />
+    <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoZ.cs" />
+    <Compile Include="TetriminoStrategy\TetriminoStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
