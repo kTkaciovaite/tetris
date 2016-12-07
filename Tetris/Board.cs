@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Tetris
 {
@@ -6,6 +7,9 @@ namespace Tetris
     {
         private const int BoardWidth = 14;
         private const int BoardHeight = 21;
+
+        Colors colors = new Colors();
+        private Dictionary<int, ConsoleColor> ColorsDictionary => colors.getColors();
 
         public int[][] gameBoard { get; set; }
 
@@ -38,51 +42,21 @@ namespace Tetris
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    switch (gameBoard[i][j])
-                    {
-                        case -2:
-                            drawCell(ConsoleColor.Black, "#");
-                            break;
-                        case -1:
-                            drawCell(ConsoleColor.Black, " ");
-                            break;
-                        case 0:
-                            drawCell(ConsoleColor.Cyan, " ");
-                            break;
-                        case 1:
-                            drawCell(ConsoleColor.Blue, " ");
-                            break;
-                        case 2:
-                            drawCell(ConsoleColor.DarkYellow, " ");
-                            break;
-                        case 3:
-                            drawCell(ConsoleColor.Yellow, " ");
-                            break;
-                        case 4:
-                            drawCell(ConsoleColor.Green, " ");
-                            break;
-                        case 5:
-                            drawCell(ConsoleColor.Magenta, " ");
-                            break;
-                        case 6:
-                            drawCell(ConsoleColor.Red, " ");
-                            break;
-                    }
+                    ConsoleColor color;
+                    ColorsDictionary.TryGetValue(gameBoard[i][j], out color);
+                    Console.BackgroundColor = color;
+
+                    string content = gameBoard[i][j] == -2 ? "#" : " ";
+                    Console.Write(content);
                 }
                 Console.WriteLine();
             }
         }
 
-        public void drawCell(ConsoleColor color, string content)
-        {
-            Console.BackgroundColor = color;
-            Console.Write(content);
-        }
-
         public void putTetriminoIntoBoard(Tetrimino tetrimino)
         {
             int index = 0;
-            
+
             for (int i = 0; i < tetrimino.dimension; i++)
             {
                 for (int j = 0; j < tetrimino.dimension; j++)
@@ -119,3 +93,4 @@ namespace Tetris
 
         public int Width => BoardWidth;
     }
+}
