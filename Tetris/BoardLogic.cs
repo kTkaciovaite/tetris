@@ -2,6 +2,12 @@
 {
     public class BoardLogic
     {
+        Constants constants = new Constants();
+
+        private int boardWidth => constants.BoardWidth;
+
+        private int boardHeight => constants.BoardHeight;
+
         public void dropDown(Board board, Tetrimino tetrimino, ref bool isFalling)
         {
             if(tetrimino.canBeDropped(board))
@@ -38,7 +44,7 @@
 
         public void deleteFullLines(Board board)
         {
-            for (int i = 0; i < board.Height - 1; i ++)
+            for (int i = 0; i < boardHeight - 1; i ++)
             {
                 if(isLineFull(board, i))
                 {
@@ -53,7 +59,7 @@
 
             for (int i = line; i > 0; i--)
             {
-                for (int j = 2; j < board.Width - 2; j++)
+                for (int j = 2; j < boardWidth - 2; j++)
                 {
                     gameBoard[i][j] = gameBoard[i - 1][j];
                 }
@@ -64,7 +70,7 @@
         {
             int[][] gameBoard = board.getBoard();
 
-            for (int i = 2; i < board.Width - 2; i++)
+            for (int i = 2; i < boardWidth - 2; i++)
             {
                 if (gameBoard[line][i] == -1)
                 {

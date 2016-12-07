@@ -5,8 +5,11 @@ namespace Tetris
 {
     public class Board
     {
-        private const int BoardWidth = 14;
-        private const int BoardHeight = 21;
+        Constants constants = new Constants();
+
+        private int boardWidth => constants.BoardWidth;
+
+        private int boardHeight => constants.BoardHeight;
 
         Colors colors = new Colors();
         private Dictionary<int, ConsoleColor> ColorsDictionary => colors.getColors();
@@ -22,12 +25,12 @@ namespace Tetris
 
         public int[][] createBoard()
         {
-            int[][] board = new int[Height][];
+            int[][] board = new int[boardHeight][];
 
-            for (int i = 0; i < Height; i++)
+            for (int i = 0; i < boardHeight; i++)
             {
-                board[i] = new int[Width];
-                for (int j = 0; j < Width; j++)
+                board[i] = new int[boardWidth];
+                for (int j = 0; j < boardWidth; j++)
                 {
                     board[i][j] = isBorder(i, j) ? -2 : -1;
                 }
@@ -36,15 +39,15 @@ namespace Tetris
             return board;
         }
 
-        public bool isBorder(int i, int j) => j < 2 || j > Width - 3 || i == Height - 1;
+        public bool isBorder(int i, int j) => j < 2 || j > boardWidth - 3 || i == boardHeight - 1;
 
         public void drawBoard()
         {
             ConsoleColor color;
 
-            for (int i = 0; i < Height; i++)
+            for (int i = 0; i < boardHeight; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int j = 0; j < boardWidth; j++)
                 {
                     ColorsDictionary.TryGetValue(gameBoard[i][j], out color);
                     Console.BackgroundColor = color;
@@ -91,9 +94,5 @@ namespace Tetris
         public void setCellValue(int x, int y, int value) => gameBoard[y][x] = value;
 
         public bool isBoardCellEmpty(int index, int i) => gameBoard[index][i] == -1;
-
-        public int Height => BoardHeight;
-
-        public int Width => BoardWidth;
     }
 }
