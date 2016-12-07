@@ -11,8 +11,7 @@ namespace Tetris
 
         private int boardHeight => constants.BoardHeight;
 
-        Colors colors = new Colors();
-        private Dictionary<int, ConsoleColor> ColorsDictionary => colors.getColors();
+        
 
         private int[][] gameBoard { get; set; }
 
@@ -41,23 +40,7 @@ namespace Tetris
 
         public bool isBorder(int i, int j) => j < 2 || j > boardWidth - 3 || i == boardHeight - 1;
 
-        public void drawBoard()
-        {
-            ConsoleColor color;
-
-            for (int i = 0; i < boardHeight; i++)
-            {
-                for (int j = 0; j < boardWidth; j++)
-                {
-                    ColorsDictionary.TryGetValue(gameBoard[i][j], out color);
-                    Console.BackgroundColor = color;
-
-                    string content = gameBoard[i][j] == -2 ? "#" : " ";
-                    Console.Write(content);
-                }
-                Console.WriteLine();
-            }
-        }
+        
 
         public void putTetriminoIntoBoard(Tetrimino tetrimino)
         {

@@ -8,6 +8,7 @@ namespace Tetris
         {
             Board board = new Board();
             BoardLogic boardLogic = new BoardLogic();
+            BoardDrawer boardDrawer = new BoardDrawer();
 
             bool isFalling;
             bool isRunning = true;
@@ -19,7 +20,7 @@ namespace Tetris
                 Tetrimino tetrimino = new Tetrimino();
                 board.putTetriminoIntoBoard(tetrimino);
                 Console.Clear();
-                board.drawBoard();
+                boardDrawer.drawBoard(board.getBoard());
 
                 isFalling = true;
                 while (isFalling)
@@ -42,13 +43,13 @@ namespace Tetris
                                 break;
                         }
 
-                        board.drawBoard();
+                        boardDrawer.drawBoard(board.getBoard());
                     }
                     else
                     {
                         Console.Clear();
                         boardLogic.dropDown(board, tetrimino, ref isFalling);
-                        board.drawBoard();
+                        boardDrawer.drawBoard(board.getBoard());
                         System.Threading.Thread.Sleep(700);
                     }
                 }
