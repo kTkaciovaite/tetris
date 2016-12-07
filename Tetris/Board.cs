@@ -11,12 +11,14 @@ namespace Tetris
         Colors colors = new Colors();
         private Dictionary<int, ConsoleColor> ColorsDictionary => colors.getColors();
 
-        public int[][] gameBoard { get; set; }
+        private int[][] gameBoard { get; set; }
 
         public Board()
         {
             gameBoard = createBoard();
         }
+
+        public int[][] getBoard() => gameBoard;
 
         public int[][] createBoard()
         {
@@ -38,11 +40,12 @@ namespace Tetris
 
         public void drawBoard()
         {
+            ConsoleColor color;
+
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    ConsoleColor color;
                     ColorsDictionary.TryGetValue(gameBoard[i][j], out color);
                     Console.BackgroundColor = color;
 

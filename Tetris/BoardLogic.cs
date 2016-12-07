@@ -49,20 +49,24 @@
 
         public void deleteFullLine(Board board, int line)
         {
+            int[][] gameBoard = board.getBoard();
+
             for (int i = line; i > 0; i--)
             {
                 for (int j = 2; j < board.Width - 2; j++)
                 {
-                    board.gameBoard[i][j] = board.gameBoard[i - 1][j];
+                    gameBoard[i][j] = gameBoard[i - 1][j];
                 }
             }
         }
 
         public bool isLineFull(Board board, int line)
         {
+            int[][] gameBoard = board.getBoard();
+
             for (int i = 2; i < board.Width - 2; i++)
             {
-                if (board.gameBoard[line][i] == -1)
+                if (gameBoard[line][i] == -1)
                 {
                     return false;
                 }

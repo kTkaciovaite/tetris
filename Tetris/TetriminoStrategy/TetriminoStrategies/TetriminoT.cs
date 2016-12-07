@@ -4,7 +4,7 @@ namespace Tetris.TetriminoStrategies
 {
     class TetriminoT : TetriminoStrategy
     {
-        public override void create()
+        public TetriminoT()
         {
             id = 5;
             x = 5;
@@ -16,7 +16,7 @@ namespace Tetris.TetriminoStrategies
             createStates();
             createBounds();
         }
-
+        
         public override void createStates()
         {
             statesDictionary = new Dictionary<int, string> { };

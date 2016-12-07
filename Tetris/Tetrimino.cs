@@ -20,9 +20,14 @@ namespace Tetris
         
         public Tetrimino()
         {
+            createRandomTetrimino();
+        }
+
+        public void createRandomTetrimino()
+        {
             Random newId = new Random();
-            
-            switch(newId.Next(0, 7))
+
+            switch (newId.Next(0, 7))
             {
                 case 0:
                     tetrimino = new TetriminoI();
@@ -46,8 +51,6 @@ namespace Tetris
                     tetrimino = new TetriminoZ();
                     break;
             }
-
-            tetrimino.create();
         }
         
         public void moveDown() => tetrimino.y++;

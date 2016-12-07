@@ -26,8 +26,6 @@ namespace Tetris
         public Dictionary<int, string> rightBoundsDictionary { get; set; }
 
         //methods
-        public abstract void create();
-
         public abstract void createStates();
 
         public abstract void createBounds();

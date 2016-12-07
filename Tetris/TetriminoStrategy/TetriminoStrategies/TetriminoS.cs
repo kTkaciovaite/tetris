@@ -4,7 +4,7 @@ namespace Tetris.TetriminoStrategies
 {
     class TetriminoS : TetriminoStrategy
     {
-        public override void create()
+        public TetriminoS()
         {
             id = 4;
             x = 5;
