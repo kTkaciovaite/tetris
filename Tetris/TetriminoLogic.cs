@@ -4,27 +4,29 @@ using Tetris.TetriminoStrategies;
 
 namespace Tetris
 {
-    public class Tetrimino
+    public class TetriminoLogic
     {
         private TetriminoStrategy tetrimino;
 
-        public int id => tetrimino.id;
+        public int id => tetrimino.Id;
 
-        public int x => tetrimino.x;
+        public int x => tetrimino.X;
 
-        public int y => tetrimino.y;
+        public int y => tetrimino.Y;
 
-        public int dimension => tetrimino.dimension;
+        public int dimension => tetrimino.Dimension;
 
-        public string piece => tetrimino.tetrimino;
-        
-        public Tetrimino()
+        public string piece { get; set; }
+
+        public TetriminoLogic()
         {
             createRandomTetrimino();
+            piece = tetrimino.Piece;
         }
 
         public void createRandomTetrimino()
         {
+            //TODO -> apply Factory pattern
             Random newId = new Random();
 
             switch (newId.Next(0, 7))
@@ -52,16 +54,16 @@ namespace Tetris
                     break;
             }
         }
-        
-        public void moveDown() => tetrimino.y++;
 
-        public void moveLeft() => tetrimino.x--;
+        public void moveDown() => tetrimino.moveDown();
 
-        public void moveRight() => tetrimino.x++;
+        public void moveLeft() => tetrimino.moveLeft();
+
+        public void moveRight() => tetrimino.moveRight();
 
         public bool canBeDropped(Board board)
         {
-            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == tetrimino.tetrimino).Key;
+            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == piece).Key;
 
             string bounds = tetrimino.bottomBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
 
@@ -82,7 +84,7 @@ namespace Tetris
 
         public bool canBeMovedLeft(Board board)
         {
-            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == tetrimino.tetrimino).Key;
+            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == piece).Key;
 
             string bounds = tetrimino.leftBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
 
@@ -103,7 +105,7 @@ namespace Tetris
 
         public bool canBeMovedRight(Board board)
         {
-            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == tetrimino.tetrimino).Key;
+            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == piece).Key;
 
             string bounds = tetrimino.rightBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
 
@@ -121,5 +123,64 @@ namespace Tetris
 
             return true;
         }
+
+        //public void rotateTetrimino(Board board)
+        //{
+        //    int currentState = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == piece).Key;
+        //    int newState = currentState == 3 ? 0 : currentState + 1;
+        //    //string newPiece;
+        //    //tetrimino.statesDictionary.TryGetValue(newState, out newPiece);
+
+        //    //bool canBeRotated = true;
+
+        //    //string temporaryBoardSpace = getBoardSpace(board);
+
+        //    //for (int i = 0; i < piece.Length; i++)
+        //    //{
+        //    //    if (newPiece[i] == '1' && temporaryBoardSpace[i] == '0')
+        //    //    {
+        //    //        canBeRotated = true;
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        canBeRotated = false;
+        //    //        break;
+        //    //    }
+        //    //}
+
+        //    //if (canBeRotated)
+        //    //{
+        //        string newPieceState;
+        //        tetrimino.statesDictionary.TryGetValue(newState, out newPieceState);
+
+        //        piece = newPieceState;
+        //    //}
+        //}
+
+        ////private string getBoardSpace(Board board)
+        ////{
+        ////    string boardSpace = "";
+        ////    int[][] gameBoard = board.getBoard();
+        ////    int index = 0;
+
+        ////    for (int i = y; i < y + dimension; i++)
+        ////    {
+        ////        for (int j = x; x < x + dimension; j++)
+        ////        {
+        ////            if (gameBoard[i][j] == -1 || piece[index] != '0')
+        ////            {
+        ////                boardSpace += "0";
+        ////            }
+        ////            else
+        ////            {
+        ////                boardSpace += "1";
+        ////            }
+
+        ////            index++;
+        ////        }
+        ////    }
+
+        ////    return boardSpace;
+        ////}
     }
 }

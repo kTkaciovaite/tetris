@@ -8,7 +8,7 @@
 
         private int boardHeight => constants.BoardHeight;
 
-        public void dropDown(Board board, Tetrimino tetrimino, ref bool isFalling)
+        public void dropDown(Board board, TetriminoLogic tetrimino, ref bool isFalling)
         {
             if(tetrimino.canBeDropped(board))
             {
@@ -22,7 +22,7 @@
             }
         }
 
-        public void moveLeft(Board board, Tetrimino tetrimino)
+        public void moveLeft(Board board, TetriminoLogic tetrimino)
         {
             if (tetrimino.canBeMovedLeft(board))
             {
@@ -32,7 +32,7 @@
             }
         }
         
-        public void moveRight(Board board, Tetrimino tetrimino)
+        public void moveRight(Board board, TetriminoLogic tetrimino)
         {
             if (tetrimino.canBeMovedRight(board))
             {
@@ -81,6 +81,6 @@
             return true;
         }
 
-        public bool isTopReached(Tetrimino tetrimino) => tetrimino.y == 0;
+        public bool isTopReached(TetriminoLogic tetrimino) => tetrimino.y == 0;
     }
 }

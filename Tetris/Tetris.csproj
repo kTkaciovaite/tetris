@@ -50,7 +50,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BoardLogic.cs" />
-    <Compile Include="Tetrimino.cs" />
+    <Compile Include="TetriminoLogic.cs" />
     <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoI.cs" />
     <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoJ.cs" />
     <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoL.cs" />

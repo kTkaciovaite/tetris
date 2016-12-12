@@ -6,12 +6,12 @@ namespace Tetris.TetriminoStrategies
     {
         public TetriminoI()
         {
-            id = 0;
-            x = 5;
-            y = 0;
-            dimension = 4;
-            tetrimino = "0000111100000000";
-            tetriminoLength = tetrimino.Length;
+            Id = 0;
+            X = 5;
+            Y = 0;
+            Dimension = 4;
+            Piece = "0000111100000000";
+            Length = Piece.Length;
 
             createStates();
             createBounds();

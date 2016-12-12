@@ -17,7 +17,7 @@ namespace Tetris
 
             while (isRunning)
             {
-                Tetrimino tetrimino = new Tetrimino();
+                TetriminoLogic tetrimino = new TetriminoLogic();
                 board.putTetriminoIntoBoard(tetrimino);
                 Console.Clear();
                 boardDrawer.drawBoard(board.getBoard());
@@ -41,6 +41,10 @@ namespace Tetris
                             case ConsoleKey.RightArrow:
                                 boardLogic.moveRight(board, tetrimino);
                                 break;
+                            //case ConsoleKey.Spacebar:
+                            //    board.removeTetriminoFromBoard(tetrimino);
+                            //    tetrimino.rotateTetrimino(board);
+                            //    break;
                         }
 
                         boardDrawer.drawBoard(board.getBoard());

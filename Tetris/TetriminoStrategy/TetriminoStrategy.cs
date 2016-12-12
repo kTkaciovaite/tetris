@@ -4,18 +4,17 @@ namespace Tetris
 {
     abstract class TetriminoStrategy
     {
-        //properties
-        public int id { get; set; }
+        public int Id { get; protected set; }
 
-        public int x { get; set; }
+        public int X { get; protected set; }
 
-        public int y { get; set; }
+        public int Y { get; protected set; }
 
-        public int dimension { get; set; }
+        public int Dimension { get; protected set; }
 
-        public int tetriminoLength { get; set; }
+        public int Length { get; protected set; }
 
-        public string tetrimino { get; set; }
+        public string Piece { get; protected set; }
         
         public Dictionary<int, string> statesDictionary { get; set; }
 
@@ -24,10 +23,15 @@ namespace Tetris
         public Dictionary<int, string> leftBoundsDictionary { get; set; }
 
         public Dictionary<int, string> rightBoundsDictionary { get; set; }
-
-        //methods
+        
         public abstract void createStates();
 
         public abstract void createBounds();
+
+        public void moveDown() => Y++;
+
+        public void moveLeft() => X--;
+
+        public void moveRight() => X++;
     }
 }

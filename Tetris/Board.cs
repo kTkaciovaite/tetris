@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Tetris
+﻿namespace Tetris
 {
     public class Board
     {
@@ -10,8 +7,6 @@ namespace Tetris
         private int boardWidth => constants.BoardWidth;
 
         private int boardHeight => constants.BoardHeight;
-
-        
 
         private int[][] gameBoard { get; set; }
 
@@ -40,9 +35,7 @@ namespace Tetris
 
         public bool isBorder(int i, int j) => j < 2 || j > boardWidth - 3 || i == boardHeight - 1;
 
-        
-
-        public void putTetriminoIntoBoard(Tetrimino tetrimino)
+        public void putTetriminoIntoBoard(TetriminoLogic tetrimino)
         {
             int index = 0;
 
@@ -60,7 +53,7 @@ namespace Tetris
             }
         }
 
-        public void removeTetriminoFromBoard(Tetrimino tetrimino)
+        public void removeTetriminoFromBoard(TetriminoLogic tetrimino)
         {
             for (int i = 0; i < tetrimino.dimension; i++)
             {
