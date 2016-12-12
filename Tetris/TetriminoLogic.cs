@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Tetris.TetriminoStrategies;
 
 namespace Tetris
 {
@@ -16,7 +15,7 @@ namespace Tetris
 
         public int dimension => tetrimino.Dimension;
 
-        public string piece { get; set; }
+        public string piece { get; private set; }
 
         public TetriminoLogic()
         {
@@ -26,33 +25,10 @@ namespace Tetris
 
         public void createRandomTetrimino()
         {
-            //TODO -> apply Factory pattern
             Random newId = new Random();
 
-            switch (newId.Next(0, 7))
-            {
-                case 0:
-                    tetrimino = new TetriminoI();
-                    break;
-                case 1:
-                    tetrimino = new TetriminoJ();
-                    break;
-                case 2:
-                    tetrimino = new TetriminoL();
-                    break;
-                case 3:
-                    tetrimino = new TetriminoO();
-                    break;
-                case 4:
-                    tetrimino = new TetriminoS();
-                    break;
-                case 5:
-                    tetrimino = new TetriminoT();
-                    break;
-                case 6:
-                    tetrimino = new TetriminoZ();
-                    break;
-            }
+            TetriminoFactory tetriminoFactory = new TetriminoFactory(newId.Next(0, 7));
+            tetrimino = tetriminoFactory.getTetrimino();
         }
 
         public void moveDown() => tetrimino.moveDown();
@@ -123,64 +99,5 @@ namespace Tetris
 
             return true;
         }
-
-        //public void rotateTetrimino(Board board)
-        //{
-        //    int currentState = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == piece).Key;
-        //    int newState = currentState == 3 ? 0 : currentState + 1;
-        //    //string newPiece;
-        //    //tetrimino.statesDictionary.TryGetValue(newState, out newPiece);
-
-        //    //bool canBeRotated = true;
-
-        //    //string temporaryBoardSpace = getBoardSpace(board);
-
-        //    //for (int i = 0; i < piece.Length; i++)
-        //    //{
-        //    //    if (newPiece[i] == '1' && temporaryBoardSpace[i] == '0')
-        //    //    {
-        //    //        canBeRotated = true;
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        canBeRotated = false;
-        //    //        break;
-        //    //    }
-        //    //}
-
-        //    //if (canBeRotated)
-        //    //{
-        //        string newPieceState;
-        //        tetrimino.statesDictionary.TryGetValue(newState, out newPieceState);
-
-        //        piece = newPieceState;
-        //    //}
-        //}
-
-        ////private string getBoardSpace(Board board)
-        ////{
-        ////    string boardSpace = "";
-        ////    int[][] gameBoard = board.getBoard();
-        ////    int index = 0;
-
-        ////    for (int i = y; i < y + dimension; i++)
-        ////    {
-        ////        for (int j = x; x < x + dimension; j++)
-        ////        {
-        ////            if (gameBoard[i][j] == -1 || piece[index] != '0')
-        ////            {
-        ////                boardSpace += "0";
-        ////            }
-        ////            else
-        ////            {
-        ////                boardSpace += "1";
-        ////            }
-
-        ////            index++;
-        ////        }
-        ////    }
-
-        ////    return boardSpace;
-        ////}
     }
 }

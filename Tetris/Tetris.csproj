@@ -50,6 +50,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BoardLogic.cs" />
+    <Compile Include="TetriminoFactory.cs" />
     <Compile Include="TetriminoLogic.cs" />
     <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoI.cs" />
     <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoJ.cs" />
@@ -58,7 +59,7 @@
     <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoS.cs" />
     <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoT.cs" />
     <Compile Include="TetriminoStrategy\TetriminoStrategies\TetriminoZ.cs" />
-    <Compile Include="TetriminoStrategy\TetriminoStrategy.cs" />
+    <Compile Include="TetriminoStrategy\Tetrimino.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
