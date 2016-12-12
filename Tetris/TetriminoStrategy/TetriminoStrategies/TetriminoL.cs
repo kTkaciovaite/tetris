@@ -2,7 +2,7 @@
 
 namespace Tetris.TetriminoStrategies
 {
-    class TetriminoL : TetriminoStrategy
+    class TetriminoL : Tetrimino
     {
         public TetriminoL()
         {

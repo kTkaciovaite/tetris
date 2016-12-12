@@ -5,7 +5,7 @@ namespace Tetris
 {
     public class TetriminoLogic
     {
-        private TetriminoStrategy tetrimino;
+        private Tetrimino tetrimino;
 
         public int id => tetrimino.Id;
 

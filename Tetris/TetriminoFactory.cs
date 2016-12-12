@@ -4,7 +4,7 @@ namespace Tetris
 {
     public class TetriminoFactory
     {
-        private TetriminoStrategy tetrimino;
+        private Tetrimino tetrimino;
 
         public TetriminoFactory(int id)
         {
@@ -34,6 +34,6 @@ namespace Tetris
             }
         }
 
-        public TetriminoStrategy getTetrimino() => tetrimino;
+        public Tetrimino getTetrimino() => tetrimino;
     }
 }

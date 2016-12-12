@@ -2,7 +2,7 @@
 
 namespace Tetris
 {
-    public abstract class TetriminoStrategy
+    public abstract class Tetrimino
     {
         public int Id { get; protected set; }
 
