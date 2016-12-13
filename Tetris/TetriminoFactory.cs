@@ -1,4 +1,5 @@
-﻿using Tetris.TetriminoStrategies;
+﻿using Tetris.TetriminoTemplates;
+using Tetris.TetriminoTemplates.Templates;
 
 namespace Tetris
 {

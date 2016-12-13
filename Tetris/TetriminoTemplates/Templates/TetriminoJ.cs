@@ -1,4 +1,4 @@
-﻿namespace Tetris.TetriminoStrategies
+﻿namespace Tetris.TetriminoTemplates.Templates
 {
     class TetriminoJ : Tetrimino
     {

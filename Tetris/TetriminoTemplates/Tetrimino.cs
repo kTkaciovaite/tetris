@@ -1,4 +1,4 @@
-﻿namespace Tetris
+﻿namespace Tetris.TetriminoTemplates
 {
     public abstract class Tetrimino
     {
@@ -15,6 +15,8 @@
         public string Piece { get; protected set; }
         
         public string[] States { get; protected set; }
+
+        //public Bounds bounds { get; set; }
 
         public string[] BottomBounds { get; protected set; }
 
