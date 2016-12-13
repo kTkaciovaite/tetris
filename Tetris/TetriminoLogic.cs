@@ -37,61 +37,10 @@ namespace Tetris
 
         public void moveRight() => tetrimino.moveRight();
 
-        public bool canBeDropped(int[][] gameBoard)
-        {
-            string bounds = tetrimino.getBottomBounds();
+        public bool canBeDropped(int[][] gameBoard) => tetrimino.canBeDropped(gameBoard);
 
-            for (int i = x; i < x + dimension; i++)
-            {
-                if (!bounds[i - x].Equals('-'))
-                {
-                    int index = y + (int)char.GetNumericValue(bounds[i - x]) + 1;
-                    if (!(gameBoard[index][i] == -1))
-                    {
-                        return false;
-                    }
-                }
-            }
+        public bool canBeMovedLeft(int[][] gameBoard) => tetrimino.canBeMovedLeft(gameBoard);
 
-            return true;
-        }
-
-        public bool canBeMovedLeft(int[][] gameBoard)
-        {
-            string bounds = tetrimino.getLeftBounds();
-
-            for (int i = y; i < y + dimension; i++)
-            {
-                if (!bounds[i - y].Equals('-'))
-                {
-                    int index = x - 1 + (int)char.GetNumericValue(bounds[i - y]);
-                    if (!(gameBoard[i][index] == -1))
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
-
-        public bool canBeMovedRight(int[][] gameBoard)
-        {
-            string bounds = tetrimino.getRightBounds();
-
-            for (int i = y; i < y + dimension; i++)
-            {
-                if (!bounds[i - y].Equals('-'))
-                {
-                    int index = x + (int)char.GetNumericValue(bounds[i - y]) + 1;
-                    if (!(gameBoard[i][index] == -1))
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
+        public bool canBeMovedRight(int[][] gameBoard) => tetrimino.canBeMovedRight(gameBoard);
     }
 }

@@ -16,17 +16,11 @@
         
         public string[] States { get; protected set; }
 
-        //public Bounds bounds { get; set; }
-
-        public string[] BottomBounds { get; protected set; }
-
-        public string[] LeftBounds { get; protected set; }
-
-        public string[] RightBounds { get; protected set; }
+        public Bounds bounds { get; protected set; }
         
         public abstract void createStates();
 
-        public abstract void createBounds();
+        protected abstract void createBounds();
         
         public void moveDown() => Y++;
 
@@ -43,29 +37,70 @@
                     return i;
                 }
             }
-
             return -1;
         }
-
-        public string getBottomBounds()
+        
+        public bool canBeDropped(int[][] gameBoard)
         {
             int stateId = getStateId();
 
-            return BottomBounds[stateId];
+            string bottomBounds = bounds.getBottomBounds(stateId);
+
+            for (int i = X; i < X + Dimension; i++)
+            {
+                if (!bottomBounds[i - X].Equals('-'))
+                {
+                    int index = Y + (int)char.GetNumericValue(bottomBounds[i - X]) + 1;
+                    if (!(gameBoard[index][i] == -1))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
-        public string getLeftBounds()
+        public bool canBeMovedLeft(int[][] gameBoard)
         {
             int stateId = getStateId();
 
-            return LeftBounds[stateId];
+            string leftBounds = bounds.getLeftBounds(stateId);
+
+            for (int i = Y; i < Y + Dimension; i++)
+            {
+                if (!leftBounds[i - Y].Equals('-'))
+                {
+                    int index = X - 1 + (int)char.GetNumericValue(leftBounds[i - Y]);
+                    if (!(gameBoard[i][index] == -1))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
-        public string getRightBounds()
+        public bool canBeMovedRight(int[][] gameBoard)
         {
             int stateId = getStateId();
 
-            return RightBounds[stateId];
+            string rightBounds = bounds.getRightBounds(stateId);
+
+            for (int i = Y; i < Y + Dimension; i++)
+            {
+                if (!rightBounds[i - Y].Equals('-'))
+                {
+                    int index = X + (int)char.GetNumericValue(rightBounds[i - Y]) + 1;
+                    if (!(gameBoard[i][index] == -1))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

@@ -20,26 +20,13 @@
             States = new string[] { "0000110001100000", "0010011001000000", "0000011000110000", "0000001001100100" };
         }
         
-        public override void createBounds()
+        protected override void createBounds()
         {
-            createBottomBounds();
-            createLeftBounds();
-            createRightBounds();
-        }
+            string[] bottomBounds = new string[] { "122-", "-21-", "-122", "-32-" };
+            string[] leftBounds = new string[] { "-01-", "211-", "-12-", "-211" };
+            string[] rightBounds = new string[] { "-12-", "221-", "-23-", "-221" };
 
-        private void createBottomBounds()
-        {
-            BottomBounds = new string[] { "122-", "-21-", "-122", "-32-" };
-        }
-
-        private void createLeftBounds()
-        {
-            LeftBounds = new string[] { "-01-", "211-", "-12-", "-211" };
-        }
-        
-        private void createRightBounds()
-        {
-            RightBounds = new string[] { "-12-", "221-", "-23-", "-221" };
+            bounds = new Bounds(bottomBounds, leftBounds, rightBounds);
         }
     }
 }
