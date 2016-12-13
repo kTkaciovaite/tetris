@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Tetris.TetriminoStrategies
+﻿namespace Tetris.TetriminoStrategies
 {
     class TetriminoZ : Tetrimino
     {
@@ -19,12 +17,7 @@ namespace Tetris.TetriminoStrategies
 
         public override void createStates()
         {
-            statesDictionary = new Dictionary<int, string> { };
-
-            statesDictionary.Add(0, "0000110001100000");
-            statesDictionary.Add(1, "0010011001000000");
-            statesDictionary.Add(2, "0000011000110000");
-            statesDictionary.Add(3, "0000001001100100");
+            States = new string[] { "0000110001100000", "0010011001000000", "0000011000110000", "0000001001100100" };
         }
         
         public override void createBounds()
@@ -36,32 +29,17 @@ namespace Tetris.TetriminoStrategies
 
         private void createBottomBounds()
         {
-            bottomBoundsDictionary = new Dictionary<int, string> { };
-
-            bottomBoundsDictionary.Add(0, "122-");
-            bottomBoundsDictionary.Add(1, "-21-");
-            bottomBoundsDictionary.Add(2, "-122");
-            bottomBoundsDictionary.Add(3, "-32-");
+            BottomBounds = new string[] { "122-", "-21-", "-122", "-32-" };
         }
 
         private void createLeftBounds()
         {
-            leftBoundsDictionary = new Dictionary<int, string> { };
-
-            leftBoundsDictionary.Add(0, "-01-");
-            leftBoundsDictionary.Add(1, "211-");
-            leftBoundsDictionary.Add(2, "-12-");
-            leftBoundsDictionary.Add(3, "-211");
+            LeftBounds = new string[] { "-01-", "211-", "-12-", "-211" };
         }
         
         private void createRightBounds()
         {
-            rightBoundsDictionary = new Dictionary<int, string> { };
-
-            rightBoundsDictionary.Add(0, "-12-");
-            rightBoundsDictionary.Add(1, "221-");
-            rightBoundsDictionary.Add(2, "-23-");
-            rightBoundsDictionary.Add(3, "-221");
+            RightBounds = new string[] { "-12-", "221-", "-23-", "-221" };
         }
     }
 }

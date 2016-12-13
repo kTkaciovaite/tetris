@@ -19,12 +19,7 @@ namespace Tetris.TetriminoStrategies
         
         public override void createStates()
         {
-            statesDictionary = new Dictionary<int, string> { };
-
-            statesDictionary.Add(0, "0000111100000000");
-            statesDictionary.Add(1, "0010001000100010");
-            statesDictionary.Add(2, "0000000011110000");
-            statesDictionary.Add(3, "0100010001000100");
+            States = new string[] { "0000111100000000", "0010001000100010", "0000000011110000", "0100010001000100" };
         }
 
         public override void createBounds()
@@ -36,32 +31,17 @@ namespace Tetris.TetriminoStrategies
 
         private void createBottomBounds()
         {
-            bottomBoundsDictionary = new Dictionary<int, string> { };
-
-            bottomBoundsDictionary.Add(0, "1111");
-            bottomBoundsDictionary.Add(1, "--3-");
-            bottomBoundsDictionary.Add(2, "2222");
-            bottomBoundsDictionary.Add(3, "-3--");
+            BottomBounds = new string[] { "1111", "--3-", "2222", "-3--" };
         }
 
         private void createLeftBounds()
         {
-            leftBoundsDictionary = new Dictionary<int, string> { };
-
-            leftBoundsDictionary.Add(0, "-0--");
-            leftBoundsDictionary.Add(1, "2222");
-            leftBoundsDictionary.Add(2, "--0-");
-            leftBoundsDictionary.Add(3, "1111");
+            LeftBounds = new string[] { "-0--", "2222", "--0-", "1111" };
         }
 
         private void createRightBounds()
         {
-            rightBoundsDictionary = new Dictionary<int, string> { };
-
-            rightBoundsDictionary.Add(0, "-3--");
-            rightBoundsDictionary.Add(1, "2222");
-            rightBoundsDictionary.Add(2, "--3-");
-            rightBoundsDictionary.Add(3, "1111");
+            RightBounds = new string[] { "-3--", "2222", "--3-", "1111" };
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Tetris
 {
@@ -39,9 +38,7 @@ namespace Tetris
 
         public bool canBeDropped(Board board)
         {
-            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == piece).Key;
-
-            string bounds = tetrimino.bottomBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
+            string bounds = tetrimino.getBottomBounds();
 
             for (int i = x; i < x + dimension; i++)
             {
@@ -60,9 +57,7 @@ namespace Tetris
 
         public bool canBeMovedLeft(Board board)
         {
-            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == piece).Key;
-
-            string bounds = tetrimino.leftBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
+            string bounds = tetrimino.getLeftBounds();
 
             for (int i = y; i < y + dimension; i++)
             {
@@ -81,9 +76,7 @@ namespace Tetris
 
         public bool canBeMovedRight(Board board)
         {
-            int state = tetrimino.statesDictionary.FirstOrDefault(x => x.Value == piece).Key;
-
-            string bounds = tetrimino.rightBoundsDictionary.FirstOrDefault(x => x.Key == state).Value;
+            string bounds = tetrimino.getRightBounds();
 
             for (int i = y; i < y + dimension; i++)
             {

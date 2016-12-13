@@ -16,22 +16,56 @@ namespace Tetris
 
         public string Piece { get; protected set; }
         
-        public Dictionary<int, string> statesDictionary { get; set; }
+        public string[] States { get; protected set; }
 
-        public Dictionary<int, string> bottomBoundsDictionary { get; set; }
+        public string[] BottomBounds { get; protected set; }
 
-        public Dictionary<int, string> leftBoundsDictionary { get; set; }
+        public string[] LeftBounds { get; protected set; }
 
-        public Dictionary<int, string> rightBoundsDictionary { get; set; }
+        public string[] RightBounds { get; protected set; }
         
         public abstract void createStates();
 
         public abstract void createBounds();
-
+        
         public void moveDown() => Y++;
 
         public void moveLeft() => X--;
 
         public void moveRight() => X++;
+
+        public int getStateId()
+        {
+            for (int i = 0; i < States.Length; i++)
+            {
+                if (Piece == States[i])
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public string getBottomBounds()
+        {
+            int stateId = getStateId();
+
+            return BottomBounds[stateId];
+        }
+
+        public string getLeftBounds()
+        {
+            int stateId = getStateId();
+
+            return LeftBounds[stateId];
+        }
+
+        public string getRightBounds()
+        {
+            int stateId = getStateId();
+
+            return RightBounds[stateId];
+        }
     }
 }
