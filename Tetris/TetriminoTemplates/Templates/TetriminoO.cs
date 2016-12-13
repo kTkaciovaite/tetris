@@ -9,7 +9,7 @@
             Y = 0;
             Dimension = 4;
             Piece = "0000011001100000";
-            Length = Piece.Length;
+            CurrentState = 0;
 
             createStates();
             createBounds();

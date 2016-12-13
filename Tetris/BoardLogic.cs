@@ -81,6 +81,6 @@
             return true;
         }
 
-        public bool isTopReached(TetriminoLogic tetrimino) => tetrimino.y == 0;
+        public bool isTopReached(TetriminoLogic tetrimino) => tetrimino.Y == 0;
     }
 }

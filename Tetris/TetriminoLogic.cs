@@ -7,20 +7,20 @@ namespace Tetris
     {
         private Tetrimino tetrimino;
 
-        public int id => tetrimino.Id;
+        public int Id => tetrimino.Id;
 
-        public int x => tetrimino.X;
+        public int X => tetrimino.X;
 
-        public int y => tetrimino.Y;
+        public int Y => tetrimino.Y;
 
-        public int dimension => tetrimino.Dimension;
+        public int Dimension => tetrimino.Dimension;
 
-        public string piece { get; private set; }
+        public string Piece { get; private set; }
 
         public TetriminoLogic()
         {
             createRandomTetrimino();
-            piece = tetrimino.Piece;
+            Piece = tetrimino.Piece;
         }
 
         public void createRandomTetrimino()

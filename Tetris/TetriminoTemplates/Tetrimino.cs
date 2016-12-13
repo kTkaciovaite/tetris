@@ -10,9 +10,9 @@
 
         public int Dimension { get; protected set; }
 
-        public int Length { get; protected set; }
-
         public string Piece { get; protected set; }
+
+        public int CurrentState { get; protected set; }
         
         public string[] States { get; protected set; }
 
@@ -27,24 +27,10 @@
         public void moveLeft() => X--;
 
         public void moveRight() => X++;
-
-        public int getStateId()
-        {
-            for (int i = 0; i < States.Length; i++)
-            {
-                if (Piece == States[i])
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-        
+                
         public bool canBeDropped(int[][] gameBoard)
         {
-            int stateId = getStateId();
-
-            string bottomBounds = bounds.getBottomBounds(stateId);
+            string bottomBounds = bounds.getBottomBounds(CurrentState);
 
             for (int i = X; i < X + Dimension; i++)
             {
@@ -63,9 +49,7 @@
 
         public bool canBeMovedLeft(int[][] gameBoard)
         {
-            int stateId = getStateId();
-
-            string leftBounds = bounds.getLeftBounds(stateId);
+            string leftBounds = bounds.getLeftBounds(CurrentState);
 
             for (int i = Y; i < Y + Dimension; i++)
             {
@@ -84,9 +68,7 @@
 
         public bool canBeMovedRight(int[][] gameBoard)
         {
-            int stateId = getStateId();
-
-            string rightBounds = bounds.getRightBounds(stateId);
+            string rightBounds = bounds.getRightBounds(CurrentState);
 
             for (int i = Y; i < Y + Dimension; i++)
             {
