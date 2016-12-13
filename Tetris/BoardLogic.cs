@@ -10,7 +10,7 @@
 
         public void dropDown(Board board, TetriminoLogic tetrimino, ref bool isFalling)
         {
-            if(tetrimino.canBeDropped(board))
+            if(tetrimino.canBeDropped(board.getBoard()))
             {
                 board.removeTetriminoFromBoard(tetrimino);
                 tetrimino.moveDown();
@@ -24,7 +24,7 @@
 
         public void moveLeft(Board board, TetriminoLogic tetrimino)
         {
-            if (tetrimino.canBeMovedLeft(board))
+            if (tetrimino.canBeMovedLeft(board.getBoard()))
             {
                 board.removeTetriminoFromBoard(tetrimino);
                 tetrimino.moveLeft();
@@ -34,7 +34,7 @@
         
         public void moveRight(Board board, TetriminoLogic tetrimino)
         {
-            if (tetrimino.canBeMovedRight(board))
+            if (tetrimino.canBeMovedRight(board.getBoard()))
             {
                 board.removeTetriminoFromBoard(tetrimino);
                 tetrimino.moveRight();

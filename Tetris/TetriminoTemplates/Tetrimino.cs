@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Tetris
+﻿namespace Tetris
 {
     public abstract class Tetrimino
     {

@@ -68,7 +68,5 @@
         }
 
         public void setCellValue(int x, int y, int value) => gameBoard[y][x] = value;
-
-        public bool isBoardCellEmpty(int index, int i) => gameBoard[index][i] == -1;
     }
 }

@@ -36,7 +36,7 @@ namespace Tetris
 
         public void moveRight() => tetrimino.moveRight();
 
-        public bool canBeDropped(Board board)
+        public bool canBeDropped(int[][] gameBoard)
         {
             string bounds = tetrimino.getBottomBounds();
 
@@ -45,7 +45,7 @@ namespace Tetris
                 if (!bounds[i - x].Equals('-'))
                 {
                     int index = y + (int)char.GetNumericValue(bounds[i - x]) + 1;
-                    if (!board.isBoardCellEmpty(index, i))
+                    if (!(gameBoard[index][i] == -1))
                     {
                         return false;
                     }
@@ -55,7 +55,7 @@ namespace Tetris
             return true;
         }
 
-        public bool canBeMovedLeft(Board board)
+        public bool canBeMovedLeft(int[][] gameBoard)
         {
             string bounds = tetrimino.getLeftBounds();
 
@@ -64,7 +64,7 @@ namespace Tetris
                 if (!bounds[i - y].Equals('-'))
                 {
                     int index = x - 1 + (int)char.GetNumericValue(bounds[i - y]);
-                    if (!board.isBoardCellEmpty(i, index))
+                    if (!(gameBoard[i][index] == -1))
                     {
                         return false;
                     }
@@ -74,7 +74,7 @@ namespace Tetris
             return true;
         }
 
-        public bool canBeMovedRight(Board board)
+        public bool canBeMovedRight(int[][] gameBoard)
         {
             string bounds = tetrimino.getRightBounds();
 
@@ -83,7 +83,7 @@ namespace Tetris
                 if (!bounds[i - y].Equals('-'))
                 {
                     int index = x + (int)char.GetNumericValue(bounds[i - y]) + 1;
-                    if (!board.isBoardCellEmpty(i, index))
+                    if (!(gameBoard[i][index] == -1))
                     {
                         return false;
                     }
