@@ -54,7 +54,7 @@
             return boardArea;
         }
 
-        public bool isBorder(int i, int j) => j < 2 || j > boardWidth - 3 || i == boardHeight - 1;
+        public bool isBorder(int i, int j) => j < 2 || j > boardWidth - 3 || i == boardHeight - 1 || i == boardHeight - 2;
 
         public void putTetriminoIntoBoard(TetriminoLogic tetrimino)
         {

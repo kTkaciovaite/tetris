@@ -7,7 +7,7 @@ namespace Tetris
 
         public int BoardWidth => boardWidth;
 
-        private const int boardHeight = 21;
+        private const int boardHeight = 22;
         
         public int BoardHeight => boardHeight;
     }

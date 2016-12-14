@@ -1,4 +1,6 @@
-﻿namespace Tetris.TetriminoTemplates
+﻿using System;
+
+namespace Tetris.TetriminoTemplates
 {
     public abstract class Tetrimino
     {
@@ -83,6 +85,36 @@
             }
 
             return true;
+        }
+
+        public bool canBeRotated(int[][] boardArea)
+        {
+            int newState = CurrentState == 3 ? 0 : CurrentState + 1;
+            string newPiece = States[newState];
+
+            int index = 0;
+
+            for (int i = 0; i < Dimension; i++)
+            {
+                for (int j = 0; j < Dimension; j++)
+                {
+                    boardArea[i][j] = Piece[index] == '1' && boardArea[i][j] == Id ? -1 : boardArea[i][j];
+                    
+                    if (newPiece[index] == '1' && boardArea[i][j] != -1)
+                    {
+                        return false;
+                    }
+                    index++;
+                }
+            }
+
+            return true;
+        }
+
+        public void update()
+        {
+            CurrentState = CurrentState == 3 ? 0 : CurrentState + 1;
+            Piece = States[CurrentState];
         }
     }
 }

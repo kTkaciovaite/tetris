@@ -15,12 +15,11 @@ namespace Tetris
 
         public int Dimension => tetrimino.Dimension;
 
-        public string Piece { get; private set; }
+        public string Piece => tetrimino.Piece;
 
         public TetriminoLogic()
         {
             createRandomTetrimino();
-            Piece = tetrimino.Piece;
         }
 
         public void createRandomTetrimino()
@@ -42,5 +41,15 @@ namespace Tetris
         public bool canBeMovedLeft(int[][] gameBoard) => tetrimino.canBeMovedLeft(gameBoard);
 
         public bool canBeMovedRight(int[][] gameBoard) => tetrimino.canBeMovedRight(gameBoard);
+
+        public void rotate(int[][] boardArea)
+        {
+            if (canBeRotated(boardArea))
+            {
+                tetrimino.update();
+            }
+        }
+
+        public bool canBeRotated(int[][] boardArea) => tetrimino.canBeRotated(boardArea);
     }
 }

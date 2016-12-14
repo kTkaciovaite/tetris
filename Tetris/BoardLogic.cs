@@ -44,7 +44,7 @@
 
         public void deleteFullLines(Board board)
         {
-            for (int i = 0; i < boardHeight - 1; i ++)
+            for (int i = 0; i < boardHeight - 2; i ++)
             {
                 if(isLineFull(board, i))
                 {

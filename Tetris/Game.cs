@@ -41,10 +41,11 @@ namespace Tetris
                             case ConsoleKey.RightArrow:
                                 boardLogic.moveRight(board, tetrimino);
                                 break;
-                            //case ConsoleKey.Spacebar:
-                            //    board.removeTetriminoFromBoard(tetrimino);
-                            //    tetrimino.rotateTetrimino(board);
-                            //    break;
+                            case ConsoleKey.Spacebar:
+                                board.removeTetriminoFromBoard(tetrimino);
+                                tetrimino.rotate(board.getBoardArea(tetrimino));
+                                board.putTetriminoIntoBoard(tetrimino);
+                                break;
                         }
 
                         boardDrawer.drawBoard(board.getBoard());
@@ -57,7 +58,6 @@ namespace Tetris
                         System.Threading.Thread.Sleep(700);
                     }
                 }
-
                 boardLogic.deleteFullLines(board);
 
                 if (boardLogic.isTopReached(tetrimino))

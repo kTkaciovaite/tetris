@@ -17,7 +17,7 @@
         
         public override void createStates()
         {
-            States = new string[] { "0000111001000000", "0010011000100000", "0000010001100100", "0000111001000000" };
+            States = new string[] { "0000111001000000", "0010011000100000", "0000001001110000", "0000010001100100" };
         }
         
         protected override void createBounds()
